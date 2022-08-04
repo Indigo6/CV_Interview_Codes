@@ -1,4 +1,4 @@
-# Implementation of Modules Frequently Required in Interview
+# Modules Frequently Required in Interview
 
 ## Image Processing
 1. Gaussian Filter
