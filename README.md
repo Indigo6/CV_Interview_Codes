@@ -6,7 +6,7 @@
 ## Backbones
 1. ViT
     + Patch Embedding
-    + Multi-Head Attetion (MHA)
+    + MultiHead Attention (MHA)
 2. Swin Transformer
     + Window Partition
     + Window-based MHA
@@ -16,3 +16,6 @@
 2. NMS
 
 ## Pose Estimation
+1. Associative Embedding
+    + loss
+    + group
