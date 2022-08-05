@@ -1,4 +1,5 @@
-# Modules Frequently Asked in Interview
+# CV Interview Codes
+Minimal implementation codes of the modules that are frequently asked in CV interviews.
 
 ## Image Processing
 1. Gaussian Filter
