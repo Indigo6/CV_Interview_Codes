@@ -29,4 +29,4 @@ Minimal implementation codes of the modules that are frequently asked in CV inte
 
 ### Generative Network
 1. Flow-based Generative Model
-    + [RealNVP](generative_model\realnvp.py)
+    + [RealNVP](generative_model/realnvp.py)
