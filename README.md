@@ -5,19 +5,20 @@ Minimal implementation codes of the modules that are frequently asked in CV inte
 1. Point in Polygon (PIP)
 
 ## Image Processing
-1. Gaussian Filter
+1. [Gaussian Filter](image_processing/filter.py)
 
 ## Backbones
 1. ViT
-    + Patch Embedding
-    + MultiHead Attention (MHA)
+    + [Patch Embedding](backbone/vit/patch_embed.py)
+    + [MultiHead Attention (MHA)](backbone/vit/attention.py)
 2. Swin Transformer
     + Window Partition
     + Window-based MHA
+    + Shifted Window-based MHA
 
 ## Object Detection
-1. IoUs Loss, including IoU/GIoU/DIoU/CIoU
-2. NMS
+1. [IoUs(IoU/GIoU/DIoU/CIoU) Loss](object_detection/iou_loss.py)
+2. [NMS](object_detection/nms.py)
 
 ## Pose Estimation
 1. Associative Embedding
