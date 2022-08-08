@@ -2,7 +2,8 @@ from turtle import forward
 import torch
 
 from torch import nn
-from vit import Patch_Embedding, MLP
+from patch_embed import Patch_Embedding
+from vit import MLP
 
 
 class SwinBlock(nn.Module):
