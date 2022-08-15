@@ -4,6 +4,7 @@ import torch
 from torch import nn
 
 """
+    https://zhuanlan.zhihu.com/p/270663039
     IOU Loss: 考虑了重叠面积，归一化坐标尺度;
     GIOU Loss: 考虑了重叠面积，基于IOU解决边界框不相交时loss等于0的问题;
     DIOU Loss: 考虑了重叠面积和中心点距离，基于IOU解决GIOU收敛慢的问题;
