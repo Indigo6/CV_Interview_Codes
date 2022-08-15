@@ -41,7 +41,7 @@ class IoULoss(nn.Module):
         inter_area = inter_wh[..., 0] * inter_wh[..., 1]
 
         ious = inter_area / (pred_area + target_area - inter_area + self.eps)
-        loss = (1-ious).mean()
+        loss = 1-ious
         return loss
 
 
@@ -77,12 +77,12 @@ class GIoULoss(nn.Module):
 
         enclosed_lt = torch.min(pred[..., :2], target[..., :2])
         enclosed_rb = torch.max(pred[..., 2:], target[..., 2:])
-        enclose_wh = enclosed_rb - enclosed_lt
-        enclose_area = enclose_wh[0] * enclose_wh[1] + self.eps
+        enclose_wh = (enclosed_rb - enclosed_lt).clamp(min=0)
+        enclose_area = enclose_wh[..., 0] * enclose_wh[..., 1] + self.eps
 
         # GIoU
         gious = ious - (enclose_area - union_area) / enclose_area
-        loss = (1 - gious).mean()
+        loss = 1 - gious
 
         return loss
 
@@ -173,7 +173,7 @@ class  CIoULoss(nn.Module):
         # CIoU
         cious = ious - (dist1 / dist2 + alpha * v)
 
-        loss = (1-cious).mean()
+        loss = 1-cious
         return loss
 
 
@@ -219,6 +219,17 @@ class  EIoULoss(nn.Module):
 
         # EIoU
         eious = ious - rho_bbox / c_bbox - rho_w/c_w - rho_h/c_h
-        loss = (1-eious).mean()
+        loss = 1-eious
         return loss
 
+if __name__ == "__main__":
+    pred_bboxes = torch.tensor([[20, 30, 80, 90, 0.7], 
+                                [50, 50, 140, 210, 0.6], 
+                                [20, 30, 70, 100, 0.8], 
+                                [200, 200, 400, 400, 0.6]])
+    gt_bboxes = torch.tensor([[40, 30, 100, 90, 0.7], 
+                              [50, 50, 140, 210, 0.6], 
+                              [80, 120, 170, 200, 0.8], 
+                              [250, 250, 350, 350, 0.6]])
+    for loss in [IoULoss(), GIoULoss()]:
+        print(loss(pred_bboxes[:, :4], gt_bboxes[:, :4]))
