@@ -231,5 +231,5 @@ if __name__ == "__main__":
                               [50, 50, 140, 210, 0.6], 
                               [80, 120, 170, 200, 0.8], 
                               [250, 250, 350, 350, 0.6]])
-    for loss in [IoULoss(), GIoULoss()]:
+    for loss in [IoULoss(), GIoULoss(), CIoULoss(), DIoULoss(), EIoULoss()]:
         print(loss(pred_bboxes[:, :4], gt_bboxes[:, :4]))
