@@ -1,6 +1,6 @@
 import numpy as np
 
-def nms(bboxes, thresh=0.5):
+def nms(bboxes, thresh=0.5, eps=1e-9):
     """NMS: Non-maximum Suppression
         Args:
             bboxes: bboxes[N,:4], torch.Tensor
@@ -24,7 +24,7 @@ def nms(bboxes, thresh=0.5):
         inter_rb = np.minimum(rbs[i], rbs[order[1:]])
         inter_wh = np.maximum(inter_rb - inter_lt, 0)
         inter_area = inter_wh[:, 0] * inter_wh[:, 1]
-        ious = inter_area / (areas[i] + areas[order[1:]] - inter_area)
+        ious = inter_area / (areas[i] + areas[order[1:]] - inter_area + eps)
         
         indexes = np.where(ious<thresh)[0]
         order = order[indexes+1]
