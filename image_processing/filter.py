@@ -1,3 +1,4 @@
+import math
 import numpy as np
 
 def gaussian_filter(image, kernel_size=7, sigma=2):
@@ -16,13 +17,15 @@ def gaussian_filter(image, kernel_size=7, sigma=2):
     indexes = np.linspace(0, kernel_size-1, kernel_size)
     x = indexes[:, np.newaxis]
     y = indexes[np.newaxis, :]
-    filter = np.exp(- ((x-radius)**2+(y-radius)**2) / sigma**2)
+    filter = np.exp(- ((x-radius)**2+(y-radius)**2) / sigma**2) / (math.sqrt(2 * math.pi) * sigma)
     filter = filter[:, :, np.newaxis]
 
     # perform filter
     for i in range(h):
         for j in range(w):
-            image[i][j][:] = np.sum(padded_image[i:i+2*radius+1, j:j+2*radius+1, :] * filter)
+            image[i][j][:] = np.sum(np.sum(padded_image[i:i+2*radius+1, j:j+2*radius+1, :] * filter,
+                                           axis=0),
+                                    axis=0)
 
     return image
 
