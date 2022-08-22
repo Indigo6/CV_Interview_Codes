@@ -23,7 +23,8 @@ Minimal implementation codes of the modules that are frequently asked in CV inte
 2. [NMS](object_detection/nms.py)
 
 ### Pose Estimation
-1. Associative Embedding
+1. [TopDown `generate_target`](pose_estimation/2d/top-down/generate_target.py)
+2. Associative Embedding
     + loss
     + group
 
