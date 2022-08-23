@@ -11,8 +11,8 @@ Minimal implementation codes of the modules that are frequently asked in CV inte
 ## Deep Learning
 ### Backbones
 1. ViT
-    + [Patch Embedding](backbone/vit/patch_embed.py)
-    + [MultiHead Attention (MHA)](backbone/vit/attention.py)
+    + [Patch Embedding](network_module/vit/patch_embed.py)
+    + [MultiHead Attention (MHA)](network_module/vit/attention.py)
 2. Swin Transformer
     + Window Partition
     + Window-based MHA
